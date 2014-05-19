@@ -16,11 +16,15 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "sunspot_padrino"
   gem.homepage = "http://github.com/supportify/sunspot_padrino"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.license = "BSD"
+  gem.summary = %Q{Padrino integration for the Sunspot Solr search library}
+  gem.description = <<-TEXT
+    Sunspot::Padrino is a derived plugin that provides drop-in integration of the
+    Sunspot Solr search library with Padrino. It is based on the original Sunspot
+    ::Rails library located at https://github.com/sunspot/sunspot.
+  TEXT
   gem.email = "help@supportify.io"
-  gem.authors = ["Jordan Yaker"]
+  gem.authors = ["Jordan Yaker", "Supportify, Inc."]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
