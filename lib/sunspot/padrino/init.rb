@@ -1,6 +1,10 @@
-require 'padrino-core/tasks'
-require 'padrino-gen/command'
-require 'padrino-core/cli/rake'
+begin
+  require 'padrino-core/tasks'
+  require 'padrino-gen/command'
+  require 'padrino-core/cli/rake'
+rescue LoadError
+  # Totally okay if these can't load.
+end
 
 Sunspot.session = Sunspot::Padrino.build_session
 Sunspot::Adapters::InstanceAdapter.register(Sunspot::Padrino::Adapters::ActiveRecordInstanceAdapter, ActiveRecord::Base)
