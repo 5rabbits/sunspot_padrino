@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "sunspot_padrino"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jordan Yaker", "Supportify, Inc."]
-  s.date = "2014-05-19"
+  s.date = "2015-05-08"
   s.description = "    Sunspot::Padrino is a derived plugin that provides drop-in integration of the\n    Sunspot Solr search library with Padrino. It is based on the original Sunspot\n    ::Rails library located at https://github.com/sunspot/sunspot.\n"
   s.email = "help@supportify.io"
   s.extra_rdoc_files = [
@@ -29,18 +29,17 @@ Gem::Specification.new do |s|
     "generators/templates/sunspot.yml",
     "lib/sunspot/padrino.rb",
     "lib/sunspot/padrino/adapters.rb",
+    "lib/sunspot/padrino/cli/tasks.rb",
     "lib/sunspot/padrino/configuration.rb",
     "lib/sunspot/padrino/init.rb",
-    "lib/sunspot/padrino/request_lifecycle.rb",
+    "lib/sunspot/padrino/rspec/spec_helper.rb",
     "lib/sunspot/padrino/searchable.rb",
     "lib/sunspot/padrino/server.rb",
-    "lib/sunspot/padrino/solr_instrumentation.rb",
-    "lib/sunspot/padrino/spec_helper.rb",
     "lib/sunspot/padrino/stub_session_proxy.rb",
-    "lib/sunspot/padrino/tasks.rb",
     "lib/sunspot_padrino.rb",
     "spec/spec_helper.rb",
-    "spec/sunspot_padrino_spec.rb"
+    "spec/sunspot_padrino_spec.rb",
+    "sunspot_padrino.gemspec"
   ]
   s.homepage = "http://github.com/supportify/sunspot_padrino"
   s.licenses = ["BSD"]
