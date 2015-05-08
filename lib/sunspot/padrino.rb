@@ -1,7 +1,6 @@
 require 'sunspot'
 require File.join(File.dirname(__FILE__), 'padrino', 'configuration')
 require File.join(File.dirname(__FILE__), 'padrino', 'adapters')
-require File.join(File.dirname(__FILE__), 'padrino', 'request_lifecycle')
 require File.join(File.dirname(__FILE__), 'padrino', 'searchable')
 
 module Sunspot #:nodoc:
