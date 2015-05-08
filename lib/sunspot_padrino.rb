@@ -10,5 +10,7 @@ require 'sunspot/padrino/init'
 # Add our generators to Padrino::Generators.
 Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/../generators/*.rb']
 
+if defined? Padrino::Tasks
 # Add our tasks to padrino-core.
-Padrino::Tasks.files << File.dirname(__FILE__) + '/sunspot/padrino/tasks.rb'
+  Padrino::Tasks.files << File.dirname(__FILE__) + '/sunspot/padrino/cli/tasks.rb'
+end
