@@ -6,8 +6,8 @@ require File.join(File.dirname(__FILE__), 'padrino', 'searchable')
 
 module Sunspot #:nodoc:
   module Padrino #:nodoc:
-    autoload :SolrInstrumentation, File.join(File.dirname(__FILE__), 'padrino', 'solr_instrumentation')
     autoload :StubSessionProxy, File.join(File.dirname(__FILE__), 'padrino', 'stub_session_proxy')
+
     begin
       require 'sunspot_solr'
       autoload :Server, File.join(File.dirname(__FILE__), 'padrino', 'server')
