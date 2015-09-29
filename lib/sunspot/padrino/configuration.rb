@@ -117,7 +117,7 @@ module Sunspot #:nodoc:
           @userinfo   = solr_url.userinfo if solr_url
           user = user_configuration_from_key('solr', 'user')
           pass = user_configuration_from_key('solr', 'pass')
-          @userinfo ||= [ user, pass ].compact.join(":") if user && pass
+          @userinfo ||= [user, pass].compact.join(':') if user && pass
           @userinfo ||= default_userinfo
         end
         @userinfo
@@ -200,7 +200,7 @@ module Sunspot #:nodoc:
       def log_level
         @log_level ||= (
           user_configuration_from_key('solr', 'log_level') ||
-          LOG_LEVELS[::Padrino.logger.level]
+          LOG_LEVELS[Padrino.logger.level]
         )
       end
 
@@ -230,7 +230,6 @@ module Sunspot #:nodoc:
           (user_configuration_from_key('auto_commit_after_delete_request') || false)
       end
 
-
       #
       # The log directory for solr logfiles
       #
@@ -239,17 +238,16 @@ module Sunspot #:nodoc:
       # String:: log_dir
       #
       def log_file
-        @log_file ||= (user_configuration_from_key('solr', 'log_file') || default_log_file_location )
+        @log_file ||= (user_configuration_from_key('solr', 'log_file') || default_log_file_location)
       end
 
       def data_path
-        @data_path ||= user_configuration_from_key('solr', 'data_path') || File.join(::Padrino.root, 'solr', 'data', ::Padrino.env)
+        @data_path ||= user_configuration_from_key('solr', 'data_path') || File.join(PADRINO_ROOT, 'solr', 'data', RACK_ENV)
       end
 
       def pid_dir
-        @pid_dir ||= user_configuration_from_key('solr', 'pid_dir') || File.join(::Padrino.root, 'solr', 'pids', ::Padrino.env)
+        @pid_dir ||= user_configuration_from_key('solr', 'pid_dir') || File.join(PADRINO_ROOT, 'solr', 'pids', RACK_ENV)
       end
-
 
       #
       # The solr home directory. Sunspot::Padrino expects this directory
@@ -265,7 +263,7 @@ module Sunspot #:nodoc:
           if user_configuration_from_key('solr', 'solr_home')
             user_configuration_from_key('solr', 'solr_home')
           else
-            File.join(::Padrino.root, 'solr')
+            File.join(PADRINO_ROOT, 'solr')
           end
       end
 
@@ -324,7 +322,7 @@ module Sunspot #:nodoc:
       # String:: default_log_file_location
       #
       def default_log_file_location
-        File.join(::Padrino.root, 'log', "solr_" + ::Padrino.env + ".log")
+        File.join(PADRINO_ROOT, 'log', 'solr_' + RACK_ENV + '.log')
       end
 
       #
@@ -334,7 +332,7 @@ module Sunspot #:nodoc:
       #
       # Mixed:: requested_key or nil
       #
-      def user_configuration_from_key( *keys )
+      def user_configuration_from_key(*keys)
         keys.inject(user_configuration) do |hash, key|
           hash[key] if hash
         end
@@ -351,10 +349,10 @@ module Sunspot #:nodoc:
       def user_configuration
         @user_configuration ||=
           begin
-            path = File.join(::Padrino.root, 'config', 'sunspot.yml')
+            path = File.join(PADRINO_ROOT, 'config', 'sunspot.yml')
             if File.exist?(path)
               File.open(path) do |file|
-                YAML.load(file.read)[::Padrino.env.to_s]
+                YAML.load(file.read)[RACK_ENV]
               end
             else
               {}
@@ -362,7 +360,7 @@ module Sunspot #:nodoc:
           end
       end
 
-    protected
+      protected
 
       #
       # When a specific hostname, port and path aren't provided in the
@@ -384,7 +382,7 @@ module Sunspot #:nodoc:
         { 'test'        => 8981,
           'development' => 8982,
           'production'  => 8983
-        }[::Padrino.env.to_s]  || 8983
+        }[RACK_ENV] || 8983
       end
 
       def default_scheme
@@ -398,7 +396,6 @@ module Sunspot #:nodoc:
       def default_path
         '/solr/default'
       end
-
     end
   end
 end

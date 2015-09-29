@@ -1,22 +1,21 @@
 module Sunspot
   module Padrino
     class Server < Sunspot::Solr::Server
-
-      # 
+      #
       # Directory in which to store PID files
       #
       def pid_dir
-        configuration.pid_dir || File.join(::Padrino.root, 'tmp', 'pids')
+        configuration.pid_dir || File.join(PADRINO_ROOT, 'tmp', 'pids')
       end
 
-      # 
+      #
       # Name of the PID file
       #
       def pid_file
-        "sunspot-solr-#{::Padrino.env}.pid"
+        "sunspot-solr-#{RACK_ENV}.pid"
       end
 
-      # 
+      #
       # Directory to store lucene index data files
       #
       # ==== Returns
@@ -27,7 +26,7 @@ module Sunspot
         configuration.data_path
       end
 
-      # 
+      #
       # Directory to use for Solr home.
       #
       def solr_home
@@ -41,14 +40,14 @@ module Sunspot
         configuration.solr_jar || super
       end
 
-      # 
+      #
       # Address on which to run Solr
       #
       def bind_address
         configuration.bind_address
       end
 
-      # 
+      #
       # Port on which to run Solr
       #
       def port
@@ -59,21 +58,21 @@ module Sunspot
         configuration.log_level
       end
 
-      # 
+      #
       # Log file for Solr. File is in the padrino log/ directory.
       #
       def log_file
-        File.join(::Padrino.root, 'log', "sunspot-solr-#{::Padrino.env}.log")
+        File.join(PADRINO_ROOT, 'log', "sunspot-solr-#{RACK_ENV}.log")
       end
 
-      # 
+      #
       # Minimum Java heap size for Solr
       #
       def min_memory
         configuration.min_memory
       end
 
-      # 
+      #
       # Maximum Java heap size for Solr
       #
       def max_memory
