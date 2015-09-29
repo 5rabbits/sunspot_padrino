@@ -356,10 +356,10 @@ module Sunspot #:nodoc:
         #
         def solr_benchmark(batch_size, counter,  &block)
           start = Time.now
-          logger.info("[#{Time.now}] Start Indexing")
+          Padrino.logger.info("[#{Time.now}] Start Indexing")
           yield
           elapsed = Time.now-start
-          logger.info("[#{Time.now}] Completed Indexing. Rows indexed #{counter * batch_size}. Rows/sec: #{batch_size/elapsed.to_f} (Elapsed: #{elapsed} sec.)")
+          Padrino.logger.info("[#{Time.now}] Completed Indexing. Rows indexed #{counter * batch_size}. Rows/sec: #{batch_size/elapsed.to_f} (Elapsed: #{elapsed} sec.)")
         end
 
       end
