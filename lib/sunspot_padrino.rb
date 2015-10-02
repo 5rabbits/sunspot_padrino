@@ -1,3 +1,5 @@
+require 'active_record'
+
 if ActiveRecord::VERSION::MAJOR > 4 || (ActiveRecord::VERSION::MAJOR == 4 && ActiveRecord::VERSION::MINOR >= 1)
   require 'active_support/core_ext/object/json'
 else
